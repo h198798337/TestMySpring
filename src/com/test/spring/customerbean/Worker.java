@@ -25,12 +25,12 @@ public class Worker {
 
 	@PostConstruct
 	public void startCount() {
-		System.out.println("startCount: " + (payment + pushMoney));
+		System.out.println("startCount : " + (payment + pushMoney));
 	}
 
 	@PreDestroy
 	public void endCount() {
-		System.out.println("endCount: " + (payment + 3 * pushMoney));
+		System.out.println("endCount : " + (payment + 3 * pushMoney));
 	}
 
 }
