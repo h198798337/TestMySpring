@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<context:component-scan base-package="com.test.springstrategy1">
+	</context:component-scan>
+	
+	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+	
+	<!-- <bean name="squenceGenerator" class="com.test.springstrategy1.SequenceGenerator">
+		<property name="prefix">
+			<value>30</value>
+		</property>
+		<property name="suffix">
+			<value>A</value>
+		</property>
+		<property name="initial">
+			<value>10000</value>
+		</property>	
+	</bean> -->
+	
+	<!-- <bean name="fruit" class="com.test.springstrategy1.Fruit">
+		<constructor-arg name="name" value="fruit"/>
+		<constructor-arg name="nutrition" value="not"/>
+		<constructor-arg name="pay" value="1"/>
+	</bean>
+
+	<bean name="apple" class="com.test.springstrategy1.Apple" parent="fruit">
+		<constructor-arg name="name" value="apple"/>
+		<constructor-arg name="nutrition" value="good delicious"/>
+		<constructor-arg name="pay" value="10"/>
+		<property name="volume">
+			<value>10</value>
+		</property>
+	</bean>
+	<bean name="pear" class="com.test.springstrategy1.Pear" parent="fruit">
+		<constructor-arg name="name" value="pear"/>
+		<constructor-arg name="nutrition" value="good delicious"/>
+		<constructor-arg name="pay" value="12"/>
+	</bean> -->
+	
+	<bean id="apple" class="com.test.springstrategy1.FruitFactory" factory-method="createFruit">
+		<constructor-arg value="0"/>
+	</bean>
+	<bean id="pear" class="com.test.springstrategy1.FruitFactory" factory-method="createFruit">
+		<constructor-arg value="1"/>
+	</bean>
+</beans>
